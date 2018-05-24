@@ -1,0 +1,25 @@
+// Input:sequencia
+// Termine o texto com o número 0
+init: inicio
+accept: concluido
+
+// Testa inicio com a e b
+inicio, a
+conta,1,>
+
+inicio,b
+conta,1,>
+
+// conta a,b,_
+conta,a
+conta,1,>
+
+conta,b
+conta,1,>
+
+conta,_
+conta,1,>
+
+// Termina se for 0
+conta,0
+concluido,_,-
