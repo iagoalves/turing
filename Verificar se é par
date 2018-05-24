@@ -1,0 +1,33 @@
+// Input: a#b (a and b are binary numbers)
+// Ouput: a+b
+// Example: 1011#10 outputs 1101
+//
+// Binary Addition Algorithm
+// for Turing Machine Simulator 
+// turingmachinesimulator.com
+// By Jose Antonio Matte
+
+name: Binary addition
+init: inicio
+accept: fim
+
+inicio,1
+acharfinal,1,>
+
+inicio,0
+acharfinal,0,>
+
+acharfinal,1
+acharfinal,1,>
+
+acharfinal,0
+acharfinal,0,>
+
+acharfinal,_
+verifica_par,_,<
+
+verifica_par,0
+par,0,-
+
+verifica_par,1
+impar,1,-
