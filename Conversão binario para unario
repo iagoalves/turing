@@ -1,0 +1,94 @@
+// Input: número binario
+// utilizado subtração por 1, sendo que cada vez que se subtrai 1, adiciona 1 na 3 linha
+//e move para direita ,desse modo ao se acabar a subtraçao a numero vai estar convertido para unario
+
+name: binario para unario
+init: inicio
+accept: concluido
+
+//Testa inicio com 0 e 1
+inicio,1,_,_
+achar_ultima_casa,1,_,_,>,-,-
+
+inicio,0,_,_
+achar_ultima_casa,0,_,_,>,-,-
+
+
+// vai para ultima casa para realizar subtração
+achar_ultima_casa,1,_,_
+achar_ultima_casa,1,_,_,>,-,-
+
+achar_ultima_casa,0,_,_
+achar_ultima_casa,0,_,_,>,-,-
+
+achar_ultima_casa,_,_,_
+subtração,_,_,_,<,-,-
+
+// 0-1 vai dar 1, mas têm que se analizar a 1 casa com 1 para retira-lo
+subtração,1,_,_
+subtração,0,_,1,-,-,>
+
+subtração,0,_,_
+achar_esquerdo_1 ,0,1,1,<,-,>
+
+//procura pelo primeiro 1 a esquerda do 0, substitui todos os 0 no caminho por 1
+// exceto o 1 que continua 0, assim e possível fazer uma marcação de onde se pode adicionar o 1
+
+achar_esquerdo_1 ,0,_,_
+achar_esquerdo_1 ,1,_,_,<,-,-
+
+
+achar_esquerdo_1 ,1,1,_
+testar_esquerdo ,0,_,_,<,-,-
+
+//Testa o esquerdo do número 1 para retira-lo caso a cadeia esteja vazia a esquerda ex: 01 = 1
+//ou mante o 0 caso o número a esquerda seja 1 ex: 1(1)10 a esquerda do 1 marcado por ()
+// há o número 1, assim é necessário mante-lo
+
+testar_esquerdo ,1,_,_
+manter_0, 1,_,_,>,-,-
+
+testar_esquerdo ,0,_,_
+manter_0, 0,1,_,>,-,-
+
+testar_esquerdo ,_,_,_
+tirar_o_0  ,_,_,_,>,-,-
+
+tirar_o_0 ,0,_,_
+levar_o_1, _,_,_,>,-,-
+
+manter_0, 0,_,_
+levar_o_1, 0,_,_,>,-,-
+
+manter_0, 0,1,_
+levar_o_1, 0,_,_,>,-,-
+
+
+// Leva o número 1 até o número que for 0 
+levar_o_1 ,0,_,_
+levar_o_1. ,1,_,_,>,-,-
+
+
+
+
+levar_o_1 , 1,_,_
+levar_o_1, 1,_,_,>,-,-
+
+levar_o_1. ,_,_,_
+subtração, _,_,_,<,-,-
+
+
+
+
+
+// No final ,em alguns testes a maquina de turing tentou subtrair um 0 inexistente
+// como correção da bug adicionei essa linha
+
+achar_esquerdo_1,_,1,_
+limpar, _,_,_,>,-,<
+
+limpar, 0,_,1
+limpar, _,_,_,-,-,-
+
+limpar, _,_,_
+concluido, _,_,_,-,-,-
