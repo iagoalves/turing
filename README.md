@@ -1,1 +1,1 @@
-# turing
+# Programas utilizando simulador de maquina de turing.
