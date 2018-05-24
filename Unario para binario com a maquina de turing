@@ -1,0 +1,62 @@
+init: Inicio
+accept: concluido
+
+//Testa inicio com 1
+Inicio,1,_,_
+soma,_,1,_,>,-,-
+
+//Faz a soma com +1 (1 smp é 1 tanto em binario quanto em unario)
+
+soma,1,1,_
+soma,_,1,0,-,-,<
+
+soma,1,_,0
+soma,_,_,1,>,-,-
+
+soma,1,_,1
+soma,_,1,0,-,-,<
+
+soma,_,1,1
+soma,_,1,0,-,-,<
+
+soma,_,1,0
+soma,_,_,1,-,-,-
+
+// apos a soma a fita vai estar a esqerda do número binario, para se voltar a somar e necessário mover a fita para a direita
+soma,_,_,1
+acharultimacasa,_,_,1,-,-,>
+
+soma,_,_,0
+acharultimacasa,_,_,0,-,-,>
+
+
+
+//Apos Somar volta para a ultima casa para realizar novas somas
+soma,_,1,_
+acharultimacasa,_,_,1,-,-,>
+
+acharultimacasa,_,_,1
+acharultimacasa,_,_,1,-,-,>
+
+acharultimacasa,_,_,0
+acharultimacasa,_,_,0,-,-,>
+
+acharultimacasa,_,_,_
+testeconclusao,_,_,_,>,-,< 
+
+
+//  testa se não têm mais números para se somar caso tenha volta para soma
+testeconclusao,_,_,_
+testeconclusao,_,_,_,<,-,-
+
+testeconclusao,_,_,1
+concluido,_,_,1,-,-,-
+
+testeconclusao,_,_,0
+concluido,_,_,0,-,-,-
+
+testeconclusao,1,_,0
+soma,_,_,1,>,-,-
+
+testeconclusao,1,_,1
+soma,_,1,0,-,-,<
